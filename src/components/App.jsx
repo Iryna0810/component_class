@@ -9,7 +9,17 @@ export class App extends Component {
       { id: nanoid(), text: 'Discover React Router', completed: false },
       { id: nanoid(), text: 'Survive a Redux', completed: false }
     ]
-}
+  }
+  
+      handleDelete = (todoIid) => {       
+        this.setState(prevState => ({
+            todos: prevState.todos.filter(todo => todo.is !== todoIid),
+        })
+            
+        
+    )
+  }
+  
   
   render() {
     const { todos } = this.state;
@@ -27,10 +37,10 @@ export class App extends Component {
     >
         <h1>State Component</h1>
         <ToDoList
-        todos = {todos}
+          onDeleteToDo={this.handleDelete}
+          todos = {todos}
         />
     </div>
   );  
   }
-  
-};
+  };
