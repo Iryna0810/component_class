@@ -1,0 +1,22 @@
+.modal_backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal_content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-height: 360px;
+    max-width: 600px;
+    width: 100%;
+    padding: 12px;
+    background-color: aliceblue;
+    border-radius: 5px;
+    box-shadow: 14px 10px 31px 0px rgba(0, 0, 0, 0.6);;
+}
