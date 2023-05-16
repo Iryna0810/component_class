@@ -98,18 +98,16 @@ export class App extends Component {
         <Button type="button" onClick={this.toggleModal}>Open Modal</Button>
         
         {showModal && (
-          <Modal
-            onClose={this.toggleModal}
+          <Modal onClose={this.toggleModal}
           >
         <h3>Title Modal</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti similique voluptas rerum id, ducimus magnam iusto dolores. Laboriosam velit dolores facilis enim repudiandae dicta, aspernatur ex saepe ea repellendus amet!
         </p>
         <Button type="button" onClick={this.toggleModal}>Close Modal</Button>
-
       </Modal>
-    )
-  
+        )
         }
+        
         <ToDoList
           onDeleteToDo={this.handleDelete}
           onHandleCompleted={this.toggleCompeted}
