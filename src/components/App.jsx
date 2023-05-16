@@ -3,6 +3,9 @@ import { Component } from "react";
 import { ToDoList } from "./ToDoList/toDoList";
 import Modal from "./Modal/modal";
 import { Button } from "./styled";
+import Clock from "./Clock/Clock";
+import Tabs from "./Tabs/Tabs";
+import tabs from '../components/Tabs.json'
 
 export class App extends Component {
   state = {
@@ -11,18 +14,19 @@ export class App extends Component {
       { id: nanoid(), text: 'Discover React Router', completed: false },
       { id: nanoid(), text: 'Survive a Redux', completed: false }
     ],
-    showModal: false
+    showModal: false,
+    showClock: false
   };
 
     componentDidMount() {
-    console.log('App componentDidAmount');
+    console.log('App componentDidMount');
     const todos = localStorage.getItem('todos');
     const parsedTodos = JSON.parse(todos);
 
-    // if (parsedTodos) {
-    //   this.setState({ todos: parsedTodos });
+    if (parsedTodos) {
+      this.setState({ todos: parsedTodos });
 
-    // }
+    }
 
   }
   componentDidUpdate(prevProps, prevState) {
@@ -39,9 +43,15 @@ export class App extends Component {
 
 
   toggleModal = () => {
-    this.setState(state => ({
-      showModal: !state.showModal,
-    }))
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
+  } 
+
+  toggleClock = () => {
+    this.setState(({ showClock }) => ({
+      showClock: !showClock,
+    }));
   } 
 
   toggleCompeted = todoIid => {
@@ -80,7 +90,7 @@ export class App extends Component {
 
   
   render() {
-    const { todos, showModal } = this.state;
+    const { showModal, showClock,todos } = this.state;
     
     return (
       <div
@@ -98,16 +108,18 @@ export class App extends Component {
         <Button type="button" onClick={this.toggleModal}>Open Modal</Button>
         
         {showModal && (
-          <Modal onClose={this.toggleModal}
-          >
+          <Modal onCloseModal={this.toggleModal}>
         <h3>Title Modal</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti similique voluptas rerum id, ducimus magnam iusto dolores. Laboriosam velit dolores facilis enim repudiandae dicta, aspernatur ex saepe ea repellendus amet!
         </p>
         <Button type="button" onClick={this.toggleModal}>Close Modal</Button>
-      </Modal>
-        )
-        }
+        </Modal>
+        )}
         
+        <Button type="button" onClick={this.toggleClock}>Open Clock</Button>
+        {showClock && <Clock onCloseClock={this.toggleClock}/>}
+        
+        {/* <Tabs items={tabs}/> */}
         <ToDoList
           onDeleteToDo={this.handleDelete}
           onHandleCompleted={this.toggleCompeted}
@@ -116,5 +128,5 @@ export class App extends Component {
     </div>
     );
   }
-};
+}
   
