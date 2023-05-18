@@ -25,8 +25,11 @@ export class App extends Component {
 
     if (parsedTodos) {
       this.setState({ todos: parsedTodos });
-
-    }
+      }
+      
+      if (parsedTodos.length === 0) {
+        this.setState({ todos: this.state.todos });
+      }
 
   }
   componentDidUpdate(prevProps, prevState) {
