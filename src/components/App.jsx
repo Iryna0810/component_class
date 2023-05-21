@@ -5,7 +5,8 @@ import Modal from "./Modal/modal";
 import { Button } from "./styled";
 import Clock from "./Clock/Clock";
 import Tabs from "./Tabs/Tabs";
-import tabs from '../components/Tabs.json'
+import tabs from '../components/Tabs.json';
+// import { ButtonTest } from './test';
 
 export class App extends Component {
   state = {
@@ -107,7 +108,7 @@ export class App extends Component {
         }}
       >
         <h1>State Component</h1>
-        
+
         <Button type="button" onClick={this.toggleModal}>Open Modal</Button>
         
         {showModal && (
